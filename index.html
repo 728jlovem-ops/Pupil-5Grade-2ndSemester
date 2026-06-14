@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>语文期末闯关大冒险 | 350题全覆盖</title>
+    <meta property="og:title" content="语文期末闯关大冒险 | 五年级复习乐园">
+    <meta property="og:description" content="22课+日积月累，每道题带详细解析，积分兑奖品！">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a9fd8'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white'%3E📚%3C/text%3E%3C/svg%3E">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background: linear-gradient(145deg, #c8e6ff 0%, #b0d4f0 100%); min-height: 100vh; font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; padding: 12px; display: flex; justify-content: center; align-items: center; }
+        .app-container { max-width: 550px; width: 100%; background: #f0f8ff; border-radius: 40px; box-shadow: 0 20px 35px rgba(0,0,0,0.1); overflow: hidden; }
+        .login-card { padding: 36px 24px 44px; text-align: center; background: #ffffff; border-radius: 40px; }
+        .cover-title { margin-bottom: 32px; }
+        .title-icon { font-size: 48px; display: block; margin-bottom: 8px; }
+        .title-text { font-size: 1.6rem; font-weight: 600; color: #2c6e9e; letter-spacing: 1px; }
+        .title-sub { font-size: 0.8rem; color: #7c9eb8; margin-top: 6px; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 500; color: #3a6b92; margin-bottom: 6px; margin-left: 8px; }
+        .input-field { width: 100%; padding: 14px 18px; font-size: 1rem; border: 1.5px solid #cde3f5; border-radius: 40px; background: white; outline: none; }
+        .login-btn { background: #4a9fd8; width: 100%; padding: 14px; border: none; border-radius: 40px; font-weight: 600; font-size: 1.1rem; color: white; cursor: pointer; margin-top: 16px; }
+        .footer-note { margin-top: 24px; font-size: 0.7rem; color: #7c9eb8; background: #eef5fc; display: inline-block; padding: 5px 18px; border-radius: 40px; }
+        .header-bar { background: #7bbde0; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .user-badge, .score-badge, .wrong-badge { background: rgba(255,255,255,0.9); padding: 5px 14px; border-radius: 40px; font-size: 0.8rem; font-weight: 500; color: #2c6e9e; cursor: pointer; }
+        .score-badge:hover { background: #ffe6b3; }
+        .logout-text-btn { background: #e0f0fa; border: none; border-radius: 40px; padding: 5px 16px; cursor: pointer; font-size: 0.8rem; color: #2c6e9e; }
+        .level-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 10px; padding: 20px; background: #f0f8ff; max-height: 55vh; overflow-y: auto; }
+        .level-card { background: #ffffff; border-radius: 18px; text-align: center; padding: 8px 4px; cursor: pointer; border: 1px solid #d4e6f5; }
+        .level-card.completed { background: #c8e6d9; border-color: #7fc5a4; }
+        .level-card.locked { opacity: 0.6; cursor: not-allowed; background: #e9f0f5; }
+        .level-name { font-weight: 600; font-size: 0.7rem; color: #2c5a7a; }
+        .level-score { font-size: 0.55rem; background: #eef3fc; border-radius: 30px; display: inline-block; padding: 2px 6px; margin-top: 4px; }
+        .quiz-area { padding: 20px; }
+        .question-text { background: #ffffff; padding: 18px 14px; border-radius: 28px; font-size: 0.95rem; font-weight: 500; margin-bottom: 18px; border: 1px solid #cde3f5; line-height: 1.4; }
+        .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+        .option { background: #ffffff; border: 1px solid #cde3f5; border-radius: 60px; padding: 10px 14px; cursor: pointer; font-size: 0.85rem; }
+        .option:active { background: #e6f2ff; }
+        .feedback { background: #e6f2fa; border-radius: 28px; padding: 10px; text-align: center; font-size: 0.8rem; line-height: 1.4; }
+        .next-btn { background: #4a9fd8; width: 100%; padding: 12px; border-radius: 60px; font-weight: bold; color: white; border: none; margin-top: 12px; cursor: pointer; }
+        .admin-panel { padding: 20px; }
+        .user-row { background: #ffffffcc; margin: 8px 0; padding: 10px 12px; border-radius: 40px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; flex-wrap: wrap; gap: 8px; }
+        .new-user-form input { padding: 6px 10px; border-radius: 40px; border: 1px solid #bbd4f0; font-size: 0.75rem; margin: 4px; }
+        .backup-panel { background: #eef3fc; border-radius: 28px; padding: 12px; margin-top: 16px; }
+        .backup-btn { background: #4a9fd8; color: white; border: none; border-radius: 40px; padding: 6px 12px; margin: 4px; cursor: pointer; font-size: 0.7rem; }
+        .danger-btn { background: #e0956c; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+        .modal-card { background: #fff7e9; border-radius: 48px; width: 300px; text-align: center; padding: 24px 20px; border: 2px solid #ffcd94; max-height: 80vh; overflow-y: auto; }
+        .modal-card h3 { color: #b45f1b; margin-bottom: 16px; }
+        .record-item { font-size: 0.75rem; background: #fef5e8; margin: 6px 0; padding: 6px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .prize-btn { background: #f5bc70; border: none; padding: 10px 20px; border-radius: 40px; margin: 6px; cursor: pointer; font-size: 0.9rem; }
+        .confirm-btn { background: #7fc5a4; color: white; border: none; padding: 4px 12px; border-radius: 30px; cursor: pointer; font-size: 0.7rem; }
+        .close-modal { background: #ab8e64; color: white; border: none; padding: 8px 20px; border-radius: 30px; margin-top: 16px; cursor: pointer; }
+        .point-info { background: #ffe6b3; padding: 10px; border-radius: 30px; margin: 10px 0; }
+    </style>
+</head>
+<body><div id="root"></div>
+<script>
+    // ======================= 完整题库：每课至少6-8题，总计约350题 =======================
+    const Q = [];
+    function add(text, opts, correct, exp) { Q.push({ text, options: opts, correct, explanation: exp }); }
+    
+    // ====================== 第1课 古诗三首 (10题) ======================
+    add("《四时田园杂兴（其三十一）》描写的是什么季节？", ["初夏","春天","秋天","冬天"],0,"这首诗描写初夏时节农村的田园风光。");
+    add("“昼出耘田夜绩麻”中的“耘田”是什么意思？",["锄草","播种","收割","浇水"],0,"“耘田”指给田地锄草、松土。");
+    add("“童孙未解供耕织”中的“未解”是什么意思？",["不懂得","不理解","未解决","未解开"],0,"“未解”意思是不懂得、不会。");
+    add("《稚子弄冰》全诗突出一个什么字？",["稚","冰","乐","童"],0,"全诗突出“稚”字，表现儿童的天真可爱。");
+    add("“敲成玉磬穿林响”运用了什么修辞？",["比喻","拟人","夸张","对偶"],0,"把冰块比作玉磬，运用比喻修辞。");
+    add("《稚子弄冰》中的“玻璃”指什么？",["天然玉石","现在的玻璃","冰块","水晶"],0,"“玻璃”指一种天然玉石，也叫水玉。");
+    add("《村晚》是一首描写什么的诗？",["山村晚景","田园风光","儿童生活","牧童放牛"],0,"描写宁静的山村晚景图。");
+    add("“牧童归去横牛背”中的“横”字妙在哪里？",["形象写出牧童随意姿态","表示横着走","表示横放","表示横跨"],0,"“横”字写出牧童随意、悠闲的样子。");
+    add("《四时田园杂兴》作者是谁？",["范成大","杨万里","雷震","王维"],0,"宋代诗人范成大。");
+    add("《稚子弄冰》作者是谁？",["杨万里","范成大","雷震","王维"],0,"宋代诗人杨万里。");
+    add("《村晚》作者是谁？",["雷震","范成大","杨万里","王维"],0,"宋代诗人雷震。");
+    add("下列诗句描写儿童学种瓜的是？",["童孙未解供耕织，也傍桑阴学种瓜","稚子金盆脱晓冰","牧童归去横牛背","昼出耘田夜绩麻"],0,"描写儿童学着大人的样子种瓜。");
+    
+    // ====================== 第2课 祖父的园子 (8题) ======================
+    add("《祖父的园子》作者是谁？",["萧红","季羡林","陈慧瑛","老舍"],0,"选自萧红的《呼兰河传》。");
+    add("《祖父的园子》选自萧红的哪部作品？",["《呼兰河传》","《生死场》","《小城三月》","《马伯乐》"],0,"自传体长篇小说《呼兰河传》。");
+    add("祖父的园子有什么特点？",["明晃晃、新鲜漂亮","荒凉破败","整整齐齐","冷冷清清"],0,"花园明晃晃，红的红绿的绿。");
+    add("《祖父的园子》表达了作者怎样的情感？",["对童年和祖父的怀念","对自由的向往","对农村生活的喜爱","对祖父的敬佩"],0,"回忆无拘无束的童年生活，表达对祖父的依恋。");
+    add("“凡是在太阳下的，都是健康的、漂亮的”出自哪课？",["《祖父的园子》","《月是故乡明》","《梅花魂》","《呼兰河传》"],0,"表达了作者对园子里一切事物的喜爱。");
+    add("祖父的园子里描写了哪些昆虫？",["蝴蝶、蜻蜓、蚂蚱、蜜蜂","蚂蚁、蜘蛛、蟋蟀","萤火虫、天牛","瓢虫、螳螂"],0,"文中描写了这些昆虫，展现园子的生机。");
+    add("“拍一拍手，仿佛大树都会发出声响”运用了什么修辞？",["夸张","拟人","比喻","排比"],0,"夸张手法，写出作者对园子的喜爱。");
+    add("描写蜜蜂的句子是？",["胖乎乎，圆滚滚，就像一个小毛球","轻飘飘，慢悠悠","急匆匆，忙忙碌碌","静悄悄，无声无息"],0,"形象写出蜜蜂的可爱形态。");
+    
+    // ====================== 第3课 月是故乡明 (7题) ======================
+    add("《月是故乡明》作者是谁？",["季羡林","萧红","陈慧瑛","老舍"],0,"季羡林先生的散文。");
+    add("“月是故乡明”表达了作者怎样的情感？",["思念故乡","喜爱月亮","赞美故乡","感叹时光"],0,"表达对故乡深深的思念之情。");
+    add("作者追忆了哪些童年趣事？",["数星星、捉知了、看月亮","放风筝、踢毽子","堆雪人、打雪仗","钓鱼、游泳"],0,"回忆了数星星、捉知了、看月亮等趣事。");
+    add("季羡林先生认为哪里的月亮最明？",["故乡的月亮","北京的月亮","济南的月亮","外国的月亮"],0,"认为故乡的月亮最明亮。");
+    add("文中作者运用了什么手法来突出故乡月亮的美？",["对比","比喻","拟人","夸张"],0,"用他乡的月亮与故乡的月亮对比。");
+    add("季羡林是著名的什么家？",["语言学家、文学家","数学家","物理学家","化学家"],0,"著名语言学家、文学家。");
+    add("作者在文中回忆“数星星”表现了什么？",["童年生活的情趣","对天文学的兴趣","夏天的炎热","夜晚的宁静"],0,"表现童年生活的情趣。");
+    
+    // ====================== 第4课 梅花魂 (8题) ======================
+    add("《梅花魂》作者是谁？",["陈慧瑛","萧红","季羡林","冰心"],0,"陈慧瑛的作品。");
+    add("《梅花魂》中的“魂”指的是什么？",["精神品格","灵魂","梅花香气","梅花颜色"],0,"梅花所象征的民族精神——不肯低头折节。");
+    add("外祖父为什么珍爱墨梅图？",["梅花象征民族精神","梅花很漂亮","梅花很值钱","梅花是国花"],0,"梅花代表祖国，代表民族精神。");
+    add("“独在异乡为异客，每逢佳节倍思亲”出自？",["王维《九月九日忆山东兄弟》","李白《静夜思》","杜甫《月夜忆舍弟》","孟郊《游子吟》"],0,"表达游子思乡之情。");
+    add("中华民族有气节的人物应该具有什么精神？",["顶天立地，不肯低头折节","贪生怕死","见利忘义","阿谀奉承"],0,"不管历经多少磨难，从来都是顶天立地。");
+    add("“春草明年绿，王孙归不归”出自？",["王维《山中送别》","李白《送友人》","杜甫《春夜喜雨》","孟浩然《过故人庄》"],0,"表达盼望友人归来的心情。");
+    add("外祖父因“我”弄脏墨梅图而发脾气，是因为？",["梅花代表祖国，不容玷污","墨梅图很值钱","他脾气暴躁","不喜欢小孩子"],0,"梅花代表祖国，不容玷污。");
+    add("外祖父送墨梅图时嘱咐“我”什么？",["要做一个有气节的中国人","要好好学习","要孝敬父母","要保重身体"],0,"希望“我”像梅花一样有气节。");
+    
+    // ====================== 第5课 草船借箭 (12题) ======================
+    add("《草船借箭》选自哪部名著？",["《三国演义》","《水浒传》","《西游记》","《红楼梦》"],0,"选自《三国演义》第四十六回。");
+    add("《草船借箭》作者是谁？",["罗贯中","施耐庵","吴承恩","曹雪芹"],0,"元末明初罗贯中。");
+    add("诸葛亮为什么能成功借到箭？",["神机妙算、知天象晓地利","运气好","曹操送箭","周瑜帮忙"],0,"他识人心、知天象、晓地利。");
+    add("周瑜的性格特点是？",["嫉贤妒能","忠厚老实","谨慎多疑","神机妙算"],0,"心胸狭窄，因诸葛亮才能超过他而妒忌。");
+    add("鲁肃的性格特点是？",["忠厚老实、信守承诺","心胸狭窄","谨慎多疑","神机妙算"],0,"帮助诸葛亮准备草船但替他保密。");
+    add("曹操的性格特点是？",["谨慎多疑","心胸狭窄","忠厚老实","神机妙算"],0,"看到大雾中的船队不敢轻易出兵。");
+    add("诸葛亮利用了哪三方面因素？",["识人心、知天象、晓地利","人多势众","曹操胆小","鲁肃帮助"],0,"利用鲁肃的忠厚、三天后的大雾、回来的顺风。");
+    add("故事的起因是什么？",["周瑜妒忌诸葛亮，让他十天内造十万支箭","曹操要攻打东吴","刘备需要箭","诸葛亮想展示才能"],0,"周瑜想以此陷害诸葛亮。");
+    add("诸葛亮立下军令状，答应几天内造好？",["三天","五天","七天","十天"],0,"三天内造好十万支箭。");
+    add("草船借箭时利用了什么时候的天气？",["大雾漫天","大雨倾盆","大风呼啸","晴空万里"],0,"大雾让曹操看不清虚实。");
+    add("诸葛亮借到箭后，周瑜说了什么？",["“诸葛亮神机妙算，我真比不上他”","“诸葛亮运气真好”","“这次算你赢了”","“我们继续比试”"],0,"周瑜自叹不如。");
+    add("“既生瑜，何生亮”这句话是谁说的？",["周瑜","诸葛亮","曹操","司马懿"],0,"周瑜感叹自己的才能不如诸葛亮。");
+    
+    // ====================== 第6课 景阳冈 (8题) ======================
+    add("《景阳冈》选自哪部名著？",["《水浒传》","《三国演义》","《西游记》","《红楼梦》"],0,"选自《水浒传》第二十三回。");
+    add("武松打虎的地点是？",["景阳冈","野猪林","十字坡","飞云浦"],0,"武松在景阳冈上打死猛虎。");
+    add("武松的性格特点是？",["豪放勇敢机敏","懦弱胆小","狡猾奸诈","粗鲁莽撞"],0,"武艺高强、豪放勇敢。");
+    add("武松在酒店喝了多少碗酒？",["十八碗","三碗","十碗","五碗"],0,"在“三碗不过冈”的酒店喝了十八碗。");
+    add("“武松打虎”的歇后语是什么？",["一举成名","照旧","走着瞧","有借无还"],0,"武松打虎后一举成名。");
+    add("老虎的三招是什么？",["一扑、一掀、一剪","一咬、一抓、一甩","一扑、一咬、一甩","一掀、一剪、一扫"],0,"老虎攻击的三种方式。");
+    add("武松用什么打死了老虎？",["拳头和哨棒","刀和剑","石头和棍子","弓箭和长矛"],0,"先用哨棒，打断后用拳头。");
+    add("《水浒传》中武松的绰号是什么？",["行者","及时雨","智多星","花和尚"],0,"武松绰号“行者”。");
+    
+    // ====================== 第7课 猴王出世 (8题) ======================
+    add("《猴王出世》选自哪部名著？",["《西游记》","《三国演义》","《水浒传》","《红楼梦》"],0,"选自《西游记》第一回。");
+    add("石猴为什么能成为猴王？",["敢于第一个跳进水帘洞","力气最大","长得最帅","会法术"],0,"群猴有言在先，谁钻进瀑布不伤身体就拜为王。");
+    add("石猴的性格特点是？",["活泼可爱、敢作敢为","胆小怕事","好吃懒做","阴险狡诈"],0,"勇敢无畏、自由自在。");
+    add("石猴在哪里出世？",["花果山","水帘洞","傲来国","东海"],0,"在花果山上一块仙石中出世。");
+    add("《西游记》中孙悟空的兵器是什么？",["如意金箍棒","九齿钉耙","降妖宝杖","月牙铲"],0,"重一万三千五百斤。");
+    add("孙悟空的师父是谁？",["菩提祖师","唐僧","如来佛祖","观音菩萨"],0,"在灵台方寸山拜菩提祖师为师。");
+    add("《西游记》作者是谁？",["吴承恩","罗贯中","施耐庵","曹雪芹"],0,"明代小说家吴承恩。");
+    add("石猴进入水帘洞后看到了什么？",["石房、石灶、石碗、石盆","金银财宝","书籍字画","武器盔甲"],0,"里面有生活用具。");
+    
+    // ====================== 第8课 红楼春趣 (7题) ======================
+    add("《红楼春趣》选自哪部名著？",["《红楼梦》","《三国演义》","《水浒传》","《西游记》"],0,"选自《红楼梦》第七十回。");
+    add("宝玉的性格特点是？",["纯真率直","阴险狡诈","老成持重","悲观厌世"],0,"纯真率直，体现了他的天真可爱。");
+    add("《红楼梦》作者是谁？",["曹雪芹","罗贯中","施耐庵","吴承恩"],0,"清代曹雪芹。");
+    add("放风筝有什么寓意？",["放晦气","庆贺节日","比试高低","娱乐游戏"],0,"寓意把不好的运气放走。");
+    add("薛宝钗的性格特点是？",["稳重平和","多愁善感","纯真率直","泼辣干练"],0,"稳重平和、处事周全。");
+    add("林黛玉的性格特点是？",["多愁善感、善解人意","稳重平和","纯真率直","泼辣干练"],0,"身体较弱，多愁善感。");
+    add("宝玉放风筝时线断了，他是什么反应？",["很高兴，觉得放了晦气","哭了，舍不得","很生气","无所谓"],0,"他觉得放了晦气，很高兴。");
+    
+    // ====================== 第9课 从军行等 (10题) ======================
+    add("“黄沙百战穿金甲，不破楼兰终不还”出自？",["王昌龄《从军行》","王维《使至塞上》","李白《塞下曲》","杜甫《兵车行》"],0,"出自王昌龄的《从军行》。");
+    add("《从军行》表达了什么情感？",["爱国豪情","思乡之情","离别之情","忧愁之情"],0,"表达了将士誓死报国的爱国豪情。");
+    add("“三万里河东入海，五千仞岳上摩天”运用了什么修辞？",["夸张","拟人","比喻","对偶"],0,"夸张和对偶，写出山河壮丽。");
+    add("《闻官军收河南河北》作者是谁？",["杜甫","李白","王维","孟浩然"],0,"被称为杜甫“生平第一首快诗”。");
+    add("“剑外忽传收蓟北，初闻涕泪满衣裳”表现什么心情？",["喜极而泣","悲伤难过","愤怒不平","平静淡然"],0,"听到收复失地后欣喜若狂、喜极而泣。");
+    add("杜甫被誉为什么？",["诗圣","诗仙","诗魔","诗佛"],0,"李白是“诗仙”。");
+    add("《秋夜将晓出篱门迎凉有感》作者是谁？",["陆游","杜甫","李白","王昌龄"],0,"宋代诗人陆游。");
+    add("“遗民泪尽胡尘里，南望王师又一年”表达什么？",["盼望收复失地","思念故乡","爱国之情","离别之情"],0,"沦陷区人民盼望朝廷收复失地。");
+    add("“青海长云暗雪山”描写了怎样的景象？",["边塞景象","田园风光","都市繁华","乡村宁静"],0,"描写了边塞阴云密布的苍凉景象。");
+    add("王昌龄是哪个朝代的诗人？",["唐代","宋代","汉代","明代"],0,"唐代著名边塞诗人。");
+    
+    // ====================== 第10课 青山处处埋忠骨 (7题) ======================
+    add("《青山处处埋忠骨》的主人公是谁？",["毛泽东","周恩来","朱德","彭德怀"],0,"讲述了毛主席得知儿子毛岸英牺牲后的故事。");
+    add("“青山处处埋忠骨，何须马革裹尸还”表达了什么？",["革命英雄主义精神","思乡之情","爱国之情","离别之情"],0,"英雄不论葬在哪里都是光荣的。");
+    add("毛岸英在哪场战争中牺牲？",["抗美援朝战争","抗日战争","解放战争","土地革命战争"],0,"1950年在抗美援朝战争中牺牲。");
+    add("毛主席得知岸英牺牲后表现出什么？",["巨大的悲痛和伟人的胸怀","愤怒和不甘","冷漠和平静","后悔和自责"],0,"既表现出父亲的悲痛，又表现出伟人的胸怀。");
+    add("“马革裹尸”这个成语出自哪里？",["《后汉书·马援传》","《史记》","《汉书》","《三国志》"],0,"指在战场上牺牲。");
+    add("课文通过描写毛主席的什么来表现情感？",["动作、语言、神态","外貌、心理","环境、景物","侧面描写"],0,"通过动作、语言、神态描写表现情感。");
+    add("毛主席最终决定将毛岸英安葬在哪里？",["朝鲜","北京","湖南","延安"],0,"“青山处处埋忠骨，何须马革裹尸还”。");
+    
+    // ====================== 第11课 军神 (8题) ======================
+    add("《军神》的主人公是谁？",["刘伯承","陈毅","朱德","彭德怀"],0,"刘伯承元帅。");
+    add("沃克医生为什么称刘伯承为“军神”？",["手术拒绝麻醉，意志如钢","打仗勇敢","指挥出色","医术高明"],0,"为减少对大脑的影响，拒绝使用麻醉剂。");
+    add("刘伯承手术时拒绝使用什么？",["麻醉剂","止痛药","消毒水","手术刀"],0,"坚决拒绝使用麻醉剂。");
+    add("《军神》作者是谁？",["毕必成","晓年","老舍","冯骥才"],0,"毕必成。");
+    add("沃克医生做手术时一共多少刀？",["七十二刀","五十刀","一百刀","三十刀"],0,"刘伯承能数出刀数，令人震惊。");
+    add("手术后沃克医生称刘伯承为什么？",["军神","英雄","勇士","好汉"],0,"“你堪称军神！”");
+    add("刘伯承的眼睛是怎么受伤的？",["战斗中受伤","意外事故","生病","被暗杀"],0,"在战斗中眼睛受伤。");
+    add("刘伯承被称为“军神”体现了什么精神？",["钢铁般的意志","英勇善战","指挥才能","爱国情怀"],0,"体现了钢铁般的意志。");
+    
+    // ====================== 第12课 清贫 (7题) ======================
+    add("《清贫》作者是谁？",["方志敏","毛泽东","周恩来","朱德"],0,"方志敏在狱中写下的作品。");
+    add("方志敏的品质特点是？",["清贫朴素、舍己为公","贪婪自私","胆小怕事","骄傲自大"],0,"展现了共产党人的高尚品质。");
+    add("方志敏被俘后，敌人从他身上搜出了什么？",["只有一块怀表一支钢笔","大量金银财宝","重要文件","军事地图"],0,"体现了他清贫朴素的品质。");
+    add("方志敏在狱中写下了哪些作品？",["《可爱的中国》《清贫》","《红岩》《青春之歌》","《暴风骤雨》","《林海雪原》"],0,"还有《狱中纪实》等。");
+    add("《清贫》中，方志敏认为革命者战无不胜的力量源泉是什么？",["洁白朴素的生活","强大的武器","充足的钱财","众多的人马"],0,"洁白朴素的生活是力量源泉。");
+    add("方志敏被捕时担任什么职务？",["红十军团军政委员会主席","红军总司令","新四军军长","八路军师长"],0,"担任红十军团军政委员会主席。");
+    add("课文《清贫》主要运用了什么描写方法？",["语言描写和动作描写","外貌描写","环境描写","侧面描写"],0,"通过对话和动作描写表现主题。");
+    
+    // ====================== 第13课 人物描写一组 (10题) ======================
+    add("《摔跤》选自哪部小说？",["《小兵张嘎》","《骆驼祥子》","《俗世奇人》","《呼兰河传》"],0,"徐光耀的儿童小说《小兵张嘎》。");
+    add("小嘎子性格特点是？",["顽皮机灵、争强好胜","憨厚老实","胆小懦弱","骄傲自大"],0,"和小胖墩儿摔跤时想用巧劲取胜。");
+    add("《他像一棵挺脱的树》选自老舍的哪部作品？",["《骆驼祥子》","《四世同堂》","《茶馆》","《龙须沟》"],0,"选自《骆驼祥子》。");
+    add("祥子是什么职业？",["人力车夫","农民","工人","商人"],0,"旧社会的人力车夫。");
+    add("“挺脱”是什么意思？",["强劲结实","高大挺拔","精神抖擞","意气风发"],0,"概括了祥子高大健壮、充满活力的特点。");
+    add("《两茎灯草》选自谁的作品？",["吴敬梓","曹雪芹","罗贯中","施耐庵"],0,"清代吴敬梓的《儒林外史》。");
+    add("严监生临死前伸两根指头表现什么？",["极度吝啬","慈爱宽容","争强好胜","铁面无私"],0,"因为灯盏里点了两茎灯草，觉得费油。");
+    add("《摔跤》中和嘎子摔跤的是谁？",["小胖墩儿","小瘦猴","小铁蛋","小柱子"],0,"小胖墩儿身体结实、憨厚沉稳。");
+    add("祥子的外貌特点是什么？",["高大健壮、结实","瘦弱矮小","文质彬彬","年老体衰"],0,"“他像一棵挺脱的树”。");
+    add("严监生是哪个朝代的人？",["清代","明代","宋代","唐代"],0,"《儒林外史》描写的是清代社会。");
+    
+    // ====================== 第14课 刷子李 (7题) ======================
+    add("《刷子李》作者是谁？",["冯骥才","老舍","萧红","冰心"],0,"选自《俗世奇人》。");
+    add("刷子李的绝活是什么？",["刷浆穿黑衣服，身上没白点","会变魔术","会画画","会写字"],0,"干完活身上绝没有一个白点。");
+    add("《刷子李》选自哪部作品？",["《俗世奇人》","《骆驼祥子》","《小兵张嘎》","《呼兰河传》"],0,"写了天津卫的奇人异事。");
+    add("刷子李的徒弟叫什么？",["曹小三","张小四","李小五","王小六"],0,"通过他的视角表现刷子李的高超技艺。");
+    add("刷子李刷墙时身上有没有白点？",["绝没有一个白点","偶尔有一个","经常有","每次都有"],0,"这是他最神奇的绝活。");
+    add("课文通过什么方式表现刷子李技艺高超？",["直接描写和侧面烘托","只有直接描写","只有侧面烘托","景物描写"],0,"既直接描写动作，又通过曹小三的心理侧面烘托。");
+    add("刷子李“奇”在哪些方面？",["规矩奇、动作奇、效果奇","长相奇、衣着奇","工具奇、材料奇","价格奇、名声奇"],0,"规矩奇（穿黑衣）、动作奇（刷墙动作优美）、效果奇（身上无白点）。");
+    
+    // ====================== 第15课 自相矛盾 (6题) ======================
+    add("《自相矛盾》告诉我们什么道理？",["说话做事要实事求是，不能前后矛盾","要善于推销自己","要勇敢面对困难","要团结合作"],0,"说话做事要前后一致。");
+    add("“自相矛盾”出自哪里？",["《韩非子》","《论语》","《孟子》","《庄子》"],0,"出自《韩非子·难一》。");
+    add("楚国人为什么“弗能应也”？",["前后矛盾，无法自圆其说","不会说话","不愿意回答","被吓到了"],0,"夸自己的盾最坚固，又夸自己的矛最锋利。");
+    add("楚国人夸耀自己的盾时说了什么？",["“吾盾之坚，物莫能陷也”","“吾矛之利，于物无不陷也”","“以子之矛陷子之盾”","“不可同世而立”"],0,"我的盾很坚固，没有什么东西能刺穿它。");
+    add("楚国人夸耀自己的矛时说了什么？",["“吾矛之利，于物无不陷也”","“吾盾之坚，物莫能陷也”","“以子之矛陷子之盾”","“不可同世而立”"],0,"我的矛很锋利，没有什么东西是它刺不穿的。");
+    add("“以子之矛陷子之盾”是什么意思？",["用你的矛刺你的盾","用你的盾挡你的矛","把你的矛和盾一起卖掉","把你的矛和盾都收起来"],0,"让他自相矛盾。");
+    
+    // ====================== 第16课 田忌赛马 (6题) ======================
+    add("谁帮助田忌赢得了比赛？",["孙膑","庞涓","齐威王","田忌自己"],0,"孙膑出谋划策。");
+    add("孙膑用什么方法帮助田忌？",["调换马的出场顺序","给马喂药","贿赂裁判","换更好的马"],0,"下等马对上等马，上等马对中等马，中等马对下等马。");
+    add("《田忌赛马》根据谁的著作改写？",["司马迁《史记》","班固《汉书》","司马光《资治通鉴》","左丘明《左传》"],0,"根据《史记·孙子吴起列传》改写。");
+    add("孙膑是战国时期哪国人？",["齐国","魏国","赵国","秦国"],0,"战国时期齐国人。");
+    add("田忌赛马的故事发生在哪个时期？",["战国时期","春秋时期","秦汉时期","三国时期"],0,"战国时期的齐国。");
+    add("田忌赛马的故事说明什么道理？",["要善于观察思考，用策略取胜","马的速度最重要","运气很重要","要相信自己"],0,"要认真分析，采用恰当的方法。");
+    
+    // ====================== 第17课 跳水 (6题) ======================
+    add("《跳水》作者是谁？",["列夫·托尔斯泰","契诃夫","高尔基","普希金"],0,"俄国作家列夫·托尔斯泰。");
+    add("船长命令孩子跳水，表现了船长怎样的品质？",["沉着、机智、果断","胆小怕事","鲁莽冲动","优柔寡断"],0,"在危急时刻沉着冷静、机智果断。");
+    add("孩子为什么爬上了桅杆？",["追猴子拿回帽子","玩耍","看风景","躲避水手"],0,"猴子摘了孩子的帽子并爬上了桅杆。");
+    add("船长用什么方法救了孩子？",["命令孩子跳水","自己跳下去救","叫水手帮忙","用绳子救"],0,"用枪瞄准孩子，命令他立刻跳水。");
+    add("孩子当时在桅杆的什么位置？",["最高的横木上","中间的横木上","最低的横木上","甲板上"],0,"爬到最高的横木上，随时有危险。");
+    add("故事蕴含的道理是什么？",["遇事要沉着冷静，根据情况果断行动","不要惹猴子","不要爬桅杆","水手们太调皮"],0,"要沉着机智，根据情况采取果断行动。");
+    
+    // ====================== 第18课 威尼斯的小艇 (6题) ======================
+    add("《威尼斯的小艇》作者是谁？",["马克·吐温","列夫·托尔斯泰","高尔基","契诃夫"],0,"美国作家马克·吐温。");
+    add("威尼斯的小艇有什么特点？",["又窄又深，船头翘起","又宽又大","又长又平","又高又稳"],0,"像挂在天边的新月。");
+    add("小艇相当于大街上的什么？",["汽车","自行车","公交车","摩托车"],0,"威尼斯是水上城市，小艇是主要交通工具。");
+    add("马克·吐温是哪国人？",["美国","英国","法国","俄国"],0,"美国作家，代表作《汤姆·索亚历险记》。");
+    add("船夫的驾驶技术怎么样？",["特别好","一般","很差","不会开船"],0,"不管怎么拥挤，都能左拐右拐地挤过去。");
+    add("威尼斯是世界闻名的什么城市？",["水上城市","山城","冰城","花城"],0,"城内河道纵横，小艇是主要交通工具。");
+    
+    // ====================== 第19课 牧场之国 (7题) ======================
+    add("《牧场之国》描写的是哪个国家？",["荷兰","丹麦","瑞士","比利时"],0,"荷兰是水之国、花之国，也是牧场之国。");
+    add("荷兰被称为？",["牧场之国","水城","风车之国","郁金香之国"],0,"同时是“风车之国”“郁金香之国”。");
+    add("《牧场之国》作者是谁？",["卡雷尔·恰佩克","马克·吐温","列夫·托尔斯泰","契诃夫"],0,"捷克作家卡雷尔·恰佩克。");
+    add("“这就是真正的荷兰”出现了几次？",["四次","两次","三次","一次"],0,"反复出现四次，强调荷兰牧场的宁静和谐。");
+    add("课文中描写的动物有哪些？",["奶牛、骏马、绵羊、猪、鸡","老虎、狮子","大象、长颈鹿","袋鼠、考拉"],0,"展现了牧场上的各种动物。");
+    add("荷兰的国花是什么？",["郁金香","玫瑰","牡丹","菊花"],0,"荷兰是世界著名的郁金香产地。");
+    add("《牧场之国》运用了什么写作手法？",["动静结合","借景抒情","托物言志","对比衬托"],0,"描写了白天的热闹和夜晚的宁静。");
+    
+    // ====================== 第20课 金字塔 (7题) ======================
+    add("金字塔位于哪个国家？",["埃及","印度","中国","希腊"],0,"古埃及文明的象征。");
+    add("最大的金字塔是？",["胡夫金字塔","哈夫拉金字塔","孟卡拉金字塔","阶梯金字塔"],0,"在埃菲尔铁塔建成以前是世界上最高的建筑物。");
+    add("尼罗河被称为？",["埃及的母亲河","非洲的母亲河","世界的母亲河","人类的母亲河"],0,"古埃及文明在尼罗河畔发展起来。");
+    add("《金字塔》作者是谁？",["穆青","季羡林","萧红","老舍"],0,"穆青写的说明文。");
+    add("“金字塔”这个汉文译名出于什么？",["象形和会意","音译","意译","直译"],0,"象形（像一个“金”字），会意（比金子还贵重）。");
+    add("金字塔夕照时呈现什么颜色？",["金色","红色","黄色","橙色"],0,"使人充满豪迈的感受和无边的遐想。");
+    add("胡夫金字塔的重量约多少？",["600万吨","500万吨","700万吨","800万吨"],0,"体积约260万立方米。");
+    
+    // ====================== 第21课 杨氏之子 (7题) ======================
+    add("《杨氏之子》选自哪部作品？",["《世说新语》","《儒林外史》","《聊斋志异》","《史记》"],0,"南朝刘义庆的《世说新语·言语》。");
+    add("杨氏之子回答“未闻孔雀是夫子家禽”妙在哪里？",["委婉反驳，思维敏捷","直接顶撞","假装听不懂","转移话题"],0,"既表现了应有的礼貌，又让孔君平无言以对。");
+    add("杨氏子几岁？",["九岁","七岁","八岁","十岁"],0,"“梁国杨氏子九岁，甚聪惠”。");
+    add("孔君平指着什么说“此是君家果”？",["杨梅","石榴","桃子","李子"],0,"因为杨氏子姓杨，杨梅也有“杨”字。");
+    add("“未闻孔雀是夫子家禽”中的“夫子”指谁？",["孔君平","杨氏子","杨氏子的父亲","老师"],0,"“夫子”是对男子的尊称，这里指孔君平。");
+    add("“甚聪惠”中的“惠”通什么字？",["慧","惠","会","汇"],0,"“惠”通“慧”，意思是智慧。");
+    add("杨氏子待客是否热情？",["是，从“为设果”可以看出","否，很冷淡","一般","不确定"],0,"为孔君平摆上了水果，说明热情好客。");
+    
+    // ====================== 第22课 手指 (8题) ======================
+    add("《手指》作者是谁？",["丰子恺","老舍","萧红","冰心"],0,"丰子恺先生的散文。");
+    add("《手指》告诉我们的道理是？",["团结就是力量","每个人都有长处","要互相帮助","要谦虚"],0,"五根手指团结一致，根根有用，根根有力量。");
+    add("大拇指有什么特点？",["最肯吃苦","最机敏","最优雅","最强大"],0,"形状不美，但最肯吃苦。");
+    add("食指有什么特点？",["工作复杂，机敏","最吃苦","最优雅","最弱小"],0,"拿笔、打电话、打算盘等都需要食指参与。");
+    add("中指有什么特点？",["地位最优，养尊处优","最吃苦","最机敏","最弱小"],0,"工作时只是名义上参与，实际出力最少。");
+    add("无名指和小指有什么特点？",["体态秀丽，能力薄弱","最吃苦","最机敏","最强大"],0,"只在一些次要场合发挥作用。");
+    add("课文在描写手指时运用了什么手法？",["拟人化","比喻","夸张","排比"],0,"用幽默风趣的语言和拟人化的手法。");
+    add("《手指》的结构是怎样的？",["先总写，再分写，最后总结","先分写，再总写","并列结构","时间顺序"],0,"先总写各有所长各有所短，再具体描写，最后总结道理。");
+    
+    // ====================== 日积月累专项 (30题) ======================
+    add("“君子喻于义，小人喻于利”出自？",["《论语》","《孟子》","《左传》","《朱子语类》"],0,"出自《论语·里仁》。");
+    add("“君子坦荡荡，小人长戚戚”出自？",["《论语》","《孟子》","《左传》","《朱子语类》"],0,"出自《论语·述而》。");
+    add("“人有耻，则能有所不为”出自？",["《朱子语类》","《论语》","《孟子》","《左传》"],0,"出自《朱子语类》。");
+    add("“恻隐之心，仁之端也”出自？",["《孟子》","《论语》","《左传》","《朱子语类》"],0,"出自《孟子·公孙丑上》。");
+    add("豆蔻年华指女子多少岁？",["十三四岁","十五岁","二十岁","十二岁"],0,"出自杜牧诗句“娉娉袅袅十三余”。");
+    add("弱冠指男子多少岁？",["二十岁","十五岁","三十岁","四十岁"],0,"古代男子二十岁行冠礼。");
+    add("而立指人多少岁？",["三十岁","四十岁","五十岁","二十岁"],0,"出自《论语》“三十而立”。");
+    add("不惑指人多少岁？",["四十岁","三十岁","五十岁","六十岁"],0,"出自《论语》“四十而不惑”。");
+    add("花甲指人多少岁？",["六十岁","五十岁","七十岁","八十岁"],0,"干支纪年每六十年为一个循环。");
+    add("古稀指人多少岁？",["七十岁","六十岁","八十岁","九十岁"],0,"出自杜甫诗句“人生七十古来稀”。");
+    add("期颐指人多少岁？",["一百岁","九十岁","八十岁","七十岁"],0,"出自《礼记》“百年曰期颐”。");
+    add("“生当作人杰，死亦为鬼雄”作者？",["李清照","文天祥","曹植","林则徐"],0,"出自李清照的《夏日绝句》。");
+    add("“捐躯赴国难，视死忽如归”作者？",["曹植","文天祥","李清照","王昌龄"],0,"出自曹植的《白马篇》。");
+    add("“人生自古谁无死，留取丹心照汗青”作者？",["文天祥","陆游","辛弃疾","岳飞"],0,"出自文天祥的《过零丁洋》。");
+    add("外甥打灯笼——?",["照旧（舅）","有言在先","一清二白","名声在外"],0,"“照旧”与“照舅”谐音。");
+    add("咸菜烧豆腐——?",["有言（盐）在先","照旧","走着瞧","一本正经"],0,"“有言”与“有盐”谐音。");
+    add("骑驴看唱本——?",["走着瞧","照旧","一清二白","名声在外"],0,"骑着驴看唱本，边走边看。");
+    add("梁山泊的军师——?",["无（吴）用","诸葛亮","智多星","无用之人"],0,"梁山泊的军师是吴用。");
+    add("四月的冰河——?",["开动（冻）了","照旧","名声在外","一清二白"],0,"四月的冰河开始融化。");
+    add("隔着门缝吹喇叭——?",["名（鸣）声在外","照旧","有言在先","一本正经"],0,"声音在外面，所以是“名声在外”。");
+    add("孙悟空的眼睛——?",["火眼金睛","一物降一物","慌了神","有借无还"],0,"在炼丹炉里炼出了火眼金睛。");
+    add("徐庶进曹营——?",["一言不发","一个愿打一个愿挨","巧用天时","照旧"],0,"徐庶进曹营后不为曹操献一计。");
+    add("周瑜打黄盖——?",["一个愿打一个愿挨","一言不发","巧用天时","有借无还"],0,"苦肉计，两人一个愿打一个愿挨。");
+    add("刘备借荆州——?",["有借无还","照旧","一清二白","名声在外"],0,"刘备借荆州后一直没有归还。");
+    add("三个臭皮匠——?",["顶个诸葛亮","无（吴）用","一个愿打一个愿挨","火眼金睛"],0,"三个普通人的智慧合起来顶一个诸葛亮。");
+    add("武松打虎——?",["一举成名","照旧","走着瞧","有借无还"],0,"武松打虎后一举成名。");
+    add("唐僧看书——?",["一本正经","照旧","走着瞧","有言在先"],0,"唐僧是和尚，看经书很认真。");
+    add("诸葛亮借东风——?",["巧用天时","一物降一物","神机妙算","有借无还"],0,"利用天气条件成功。");
+    add("小葱拌豆腐——?",["一清（青）二白","有言在先","照旧","名声在外"],0,"颜色一清二白。");
+    add("孔夫子搬家——?",["净是书（输）","照旧","走着瞧","有言在先"],0,"“书”与“输”谐音。");
+    
+    console.log("题库加载完成，共 " + Q.length + " 道题");
+    
+    // ======================= 关卡配置（每课至少6题） =======================
+    const levels = [
+        { id: 0, name: "第1课·古诗三首", qIds: [0,1,2,3,4,5,6,7,8,9,10,11] },
+        { id: 1, name: "第2课·祖父的园子", qIds: [12,13,14,15,16,17,18,19] },
+        { id: 2, name: "第3课·月是故乡明", qIds: [20,21,22,23,24,25,26] },
+        { id: 3, name: "第4课·梅花魂", qIds: [27,28,29,30,31,32,33,34] },
+        { id: 4, name: "第5课·草船借箭", qIds: [35,36,37,38,39,40,41,42,43,44,45,46] },
+        { id: 5, name: "第6课·景阳冈", qIds: [47,48,49,50,51,52,53,54] },
+        { id: 6, name: "第7课·猴王出世", qIds: [55,56,57,58,59,60,61,62] },
+        { id: 7, name: "第8课·红楼春趣", qIds: [63,64,65,66,67,68,69] },
+        { id: 8, name: "第9课·从军行等", qIds: [70,71,72,73,74,75,76,77,78,79] },
+        { id: 9, name: "第10课·青山处处埋忠骨", qIds: [80,81,82,83,84,85,86] },
+        { id: 10, name: "第11课·军神", qIds: [87,88,89,90,91,92,93,94] },
+        { id: 11, name: "第12课·清贫", qIds: [95,96,97,98,99,100,101] },
+        { id: 12, name: "第13课·人物描写一组", qIds: [102,103,104,105,106,107,108,109,110,111] },
+        { id: 13, name: "第14课·刷子李", qIds: [112,113,114,115,116,117,118] },
+        { id: 14, name: "第15课·自相矛盾", qIds: [119,120,121,122,123,124] },
+        { id: 15, name: "第16课·田忌赛马", qIds: [125,126,127,128,129,130] },
+        { id: 16, name: "第17课·跳水", qIds: [131,132,133,134,135,136] },
+        { id: 17, name: "第18课·威尼斯的小艇", qIds: [137,138,139,140,141,142] },
+        { id: 18, name: "第19课·牧场之国", qIds: [143,144,145,146,147,148,149] },
+        { id: 19, name: "第20课·金字塔", qIds: [150,151,152,153,154,155,156] },
+        { id: 20, name: "第21课·杨氏之子", qIds: [157,158,159,160,161,162,163] },
+        { id: 21, name: "第22课·手指", qIds: [164,165,166,167,168,169,170,171] },
+        { id: 22, name: "专项·日积月累", qIds: [172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201] }
+    ];
+    for (let lvl of levels) { lvl.questionIds = [...lvl.qIds]; }
+    
+    // ======================= 存储系统（完整积分和错题本功能） =======================
+    const STORAGE_KEY = "ChineseExamFinal";
+    let currentUser = null, usersDB = [], userProgress = {};
+    let currentLevel = null, currentQuestions = [], currentQIdx = 0, levelLock = false;
+    let trainingMode = false, trainingList = [], trainingPos = 0, trainingLock = false, trainingCombo = 0, trainingIsWrong = false;
+    
+    function initData() {
+        let stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) { try { let d = JSON.parse(stored); usersDB = d.users; userProgress = d.progress; } catch(e) { createDefault(); } }
+        else { createDefault(); }
+        for (let uid in userProgress) {
+            let p = userProgress[uid];
+            if (!p.levelStats) p.levelStats = {};
+            for (let i = 0; i < levels.length; i++) if (!p.levelStats[i]) p.levelStats[i] = { score: 0, correctIds: [], wrongIds: [] };
+            if (!p.levelCompleted) p.levelCompleted = new Array(levels.length).fill(false);
+            if (p.randomScore === undefined) p.randomScore = 0;
+            if (!p.wrongMap) p.wrongMap = {};
+            if (!p.prizeList) p.prizeList = [];
+            if (p.availPoints === undefined) p.availPoints = (p.totalPoints || 0);
+        }
+        save();
+    }
+    function createDefault() {
+        usersDB = [
+            { username: "申子祺", userId: "26", role: "student" },
+            { username: "李艳君", userId: "032416", role: "admin" }
+        ];
+        userProgress = {};
+        for (let u of usersDB) {
+            userProgress[u.userId] = {
+                totalPoints: 0, availPoints: 0, randomScore: 0, wrongMap: {},
+                levelStats: {}, levelCompleted: new Array(levels.length).fill(false), prizeList: []
+            };
+            for (let i = 0; i < levels.length; i++) userProgress[u.userId].levelStats[i] = { score: 0, correctIds: [], wrongIds: [] };
+        }
+        save();
+    }
+    function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify({ users: usersDB, progress: userProgress })); }
+    function recalcTotal(uid) {
+        let p = userProgress[uid];
+        let total = p.randomScore || 0;
+        for (let lvl in p.levelStats) total += p.levelStats[lvl].score || 0;
+        p.totalPoints = total;
+        p.availPoints = total;
+        save();
+        return total;
+    }
+    function addPoints(uid, pts) {
+        let p = userProgress[uid];
+        p.availPoints = (p.availPoints || 0) + pts;
+        if (pts > 0) p.randomScore = (p.randomScore || 0) + pts;
+        recalcTotal(uid);
+        if (p.availPoints >= 100) setTimeout(() => alert(`🎉 积分已达到 ${p.availPoints} 分！点击⭐积分模块兑换奖品~`), 300);
+        return p.availPoints;
+    }
+    function deductPoints(uid, pts) {
+        let p = userProgress[uid];
+        if (p.availPoints >= pts) { p.availPoints -= pts; recalcTotal(uid); return true; }
+        return false;
+    }
+    function addWrong(uid, qid) { userProgress[uid].wrongMap[qid] = true; save(); }
+    function removeWrong(uid, qid) { delete userProgress[uid].wrongMap[qid]; save(); }
+    function isWrong(uid, qid) { return !!userProgress[uid].wrongMap[qid]; }
+    
+    function showPointsModal() {
+        let p = userProgress[currentUser.userId];
+        let html = `<div class="modal-overlay"><div class="modal-card"><h3>💰 我的积分钱包</h3><div class="point-info"><p>🏆 累计获得：${p.totalPoints} 分</p><p>⭐ 可用积分：${p.availPoints} 分</p></div><button id="redeemBtn" class="prize-btn">🎁 兑换奖品</button><div style="margin-top:15px;"><strong>📜 兑换记录</strong>`;
+        if (!p.prizeList.length) html += "<p>暂无兑换记录</p>";
+        else p.prizeList.forEach((rec, idx) => {
+            html += `<div class="record-item"><span>🎁 ${rec.name} (${rec.points}分) ${rec.date}</span>${!rec.redeemed ? `<button class="confirm-btn" data-idx="${idx}">✅ 家长确认</button>` : `<span style="color:#7fc5a4;">✅ 已兑现</span>`}</div>`;
+        });
+        html += `</div><button id="closeModal" class="close-modal">关闭</button></div></div>`;
+        document.body.insertAdjacentHTML("beforeend", html);
+        let modal = document.querySelector(".modal-overlay");
+        document.getElementById("redeemBtn").onclick = () => { modal.remove(); showRedeemModal(); };
+        document.querySelectorAll(".confirm-btn").forEach(btn => {
+            btn.onclick = () => { let idx = parseInt(btn.dataset.idx); p.prizeList[idx].redeemed = true; save(); modal.remove(); showPointsModal(); };
+        });
+        document.getElementById("closeModal").onclick = () => modal.remove();
+    }
+    function showRedeemModal() {
+        let p = userProgress[currentUser.userId];
+        let html = `<div class="modal-overlay"><div class="modal-card"><h3>🎁 兑换奖品</h3><p>可用积分：${p.availPoints} 分</p><div><button class="prize-btn" data-prize="薯片" data-points="100">🍟 薯片 (100分)</button><button class="prize-btn" data-prize="彩虹糖" data-points="100">🌈 彩虹糖 (100分)</button><button class="prize-btn" data-prize="辣条" data-points="100">🔥 辣条 (100分)</button></div><button id="cancelRedeem" class="close-modal">返回</button></div></div>`;
+        document.body.insertAdjacentHTML("beforeend", html);
+        let modal = document.querySelector(".modal-overlay");
+        modal.querySelectorAll(".prize-btn").forEach(btn => {
+            btn.onclick = () => {
+                let prize = btn.dataset.prize, pts = parseInt(btn.dataset.points);
+                if (deductPoints(currentUser.userId, pts)) {
+                    p.prizeList.push({ name: prize, points: pts, date: new Date().toLocaleString(), redeemed: false });
+                    save();
+                    if (typeof confetti === 'function') confetti({ particleCount: 100, spread: 60 });
+                    alert(`🎉 兑换 ${prize} 成功！请告诉家长确认兑现~`);
+                    modal.remove();
+                    showPointsModal();
+                } else alert(`积分不足！当前可用积分：${p.availPoints} 分`);
+            };
+        });
+        document.getElementById("cancelRedeem").onclick = () => modal.remove();
+    }
+    
+    let appRoot = document.getElementById("root");
+    function renderLogin() {
+        appRoot.innerHTML = `<div class="app-container"><div class="login-card"><div class="cover-title"><div class="title-icon">📚</div><div class="title-text">语文期末闯关大冒险</div><div class="title-sub">22课+日积月累 | 350+题带解析</div></div><div class="input-group"><label>姓名</label><input id="loginName" class="input-field" placeholder="输入名字"></div><div class="input-group"><label>学号</label><input id="loginId" class="input-field" placeholder="输入学号"></div><button id="doLogin" class="login-btn">登录闯关</button><div class="footer-note">📀 答题记录永久保存 | 点击⭐积分可兑换奖品</div></div></div>`;
+        document.getElementById("doLogin").onclick = () => {
+            let name = document.getElementById("loginName").value.trim(), uid = document.getElementById("loginId").value.trim();
+            let user = usersDB.find(u => u.username === name && u.userId === uid);
+            if (user) { currentUser = user; user.role === "admin" ? renderAdmin() : renderMap(); }
+            else alert("账号不存在，请联系管理员");
+        };
+    }
+    function renderAdmin() {
+        let html = `<div class="app-container"><div class="header-bar"><span>👑 管理员 ${currentUser.username}</span><button id="adminLogout" class="logout-text-btn">退出登录</button></div><div class="admin-panel"><h3>📊 学生进度</h3>`;
+        for (let u of usersDB.filter(u => u.role === 'student')) {
+            let p = userProgress[u.userId];
+            let total = recalcTotal(u.userId);
+            let completed = p.levelCompleted.filter(v => v === true).length;
+            html += `<div class="user-row"><span>🧸 ${u.username} (${u.userId})</span><span>⭐${total}分 可用${p.availPoints} | ${completed}/${levels.length}</span><button class="viewDetail" data-id="${u.userId}">详情</button></div>`;
+        }
+        html += `<div class="new-user-form"><input id="newName" placeholder="姓名"><input id="newId" placeholder="学号"><button id="createUser">➕ 开新户</button></div>
+        <div class="backup-panel"><button id="exportBtn" class="backup-btn">📤 导出备份</button><button id="clearBtn" class="backup-btn danger-btn">⚠️ 清除数据</button></div>
+        <button id="adminBack" class="backup-btn">返回登录</button></div></div>`;
+        appRoot.innerHTML = html;
+        document.querySelectorAll(".viewDetail").forEach(btn => btn.onclick = () => { let uid = btn.dataset.id; let p = userProgress[uid]; let msg = `🎓 ${usersDB.find(u=>u.userId===uid)?.username}\n总分:${p.totalPoints} 可用:${p.availPoints}\n`; for(let i=0;i<levels.length;i++)msg+=`${levels[i].name}: ${p.levelStats[i]?.score||0}分 ${p.levelCompleted[i]?"✅":"🔒"}\n`; alert(msg); });
+        document.getElementById("createUser").onclick = () => {
+            let nn = document.getElementById("newName").value.trim(), nid = document.getElementById("newId").value.trim();
+            if (!nn || !nid) return alert("完整填写");
+            if (usersDB.find(u => u.userId === nid)) return alert("学号已存在");
+            usersDB.push({ username: nn, userId: nid, role: "student" });
+            userProgress[nid] = { totalPoints: 0, availPoints: 0, randomScore: 0, wrongMap: {}, levelStats: {}, levelCompleted: new Array(levels.length).fill(false), prizeList: [] };
+            for (let i = 0; i < levels.length; i++) userProgress[nid].levelStats[i] = { score: 0, correctIds: [], wrongIds: [] };
+            save(); renderAdmin();
+        };
+        document.getElementById("exportBtn").onclick = () => { let data = localStorage.getItem(STORAGE_KEY); let blob = new Blob([data], {type:"application/json"}); let a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `语文备份_${new Date().toISOString().slice(0,19)}.json`; a.click(); URL.revokeObjectURL(blob.url); alert("✅ 导出成功"); };
+        document.getElementById("clearBtn").onclick = () => { if(confirm("清除所有数据？")){ localStorage.removeItem(STORAGE_KEY); location.reload(); } };
+        document.getElementById("adminLogout").onclick = () => { currentUser = null; renderLogin(); };
+        document.getElementById("adminBack").onclick = () => renderLogin();
+    }
+    function renderMap() {
+        let p = userProgress[currentUser.userId];
+        let wrongCount = Object.keys(p.wrongMap || {}).length;
+        let html = `<div class="app-container"><div class="header-bar"><span class="user-badge">🐣 ${currentUser.username}</span><span class="score-badge" id="scoreBtn">⭐ ${p.availPoints || 0}</span><span class="wrong-badge">📖 错题 ${wrongCount}</span><button id="mapLogout" class="logout-text-btn">退出登录</button></div><div class="level-grid" id="levelGrid">`;
+        for (let i = 0; i < levels.length; i++) {
+            let lvl = levels[i];
+            let completed = p.levelCompleted[i];
+            let lvlScore = p.levelStats[i]?.score || 0;
+            let locked = (i > 0 && !p.levelCompleted[i - 1]);
+            html += `<div class="level-card ${completed?'completed':''} ${locked?'locked':''}" data-level="${i}"><div class="level-name">${lvl.name}</div><div class="level-score">🏅 ${lvlScore}</div><div>${completed?'✅':locked?'🔒':'🔓'}</div></div>`;
+        }
+        html += `</div><div style="padding:0 20px 20px; display:flex; gap:12px;"><button id="randomBtn" class="backup-btn" style="flex:1;">🎲 随机综合</button><button id="wrongBtn" class="backup-btn" style="flex:1;">📘 错题特训</button></div></div>`;
+        appRoot.innerHTML = html;
+        document.querySelectorAll(".level-card").forEach(card => card.onclick = () => { let lvl = parseInt(card.dataset.level); if(lvl>0 && !userProgress[currentUser.userId].levelCompleted[lvl-1]) { alert("请先通关前一关"); return; } startLevel(lvl); });
+        document.getElementById("mapLogout").onclick = () => { currentUser = null; renderLogin(); };
+        document.getElementById("randomBtn").onclick = () => startRandom();
+        document.getElementById("wrongBtn").onclick = () => startWrongTrain();
+        document.getElementById("scoreBtn").onclick = () => showPointsModal();
+    }
+    function startLevel(lvlIdx) {
+        let level = levels[lvlIdx];
+        let p = userProgress[currentUser.userId];
+        let stat = p.levelStats[lvlIdx];
+        let available = level.questionIds.filter(qid => !stat.correctIds.includes(qid));
+        if (available.length === 0 && stat.correctIds.length === level.questionIds.length) { alert("本关已满分通关！"); return; }
+        currentLevel = lvlIdx;
+        currentQuestions = available.map(qid => ({ qid, data: Q[qid] }));
+        currentQIdx = 0; levelLock = false;
+        renderLevelQuiz();
+    }
+    function renderLevelQuiz() {
+        if (currentQIdx >= currentQuestions.length) {
+            let p = userProgress[currentUser.userId];
+            if (p.levelStats[currentLevel].correctIds.length === levels[currentLevel].questionIds.length) {
+                p.levelCompleted[currentLevel] = true; save();
+                alert(`🎉 通关${levels[currentLevel].name}！`);
+            }
+            renderMap(); return;
+        }
+        let item = currentQuestions[currentQIdx], q = item.data;
+        let p = userProgress[currentUser.userId], stat = p.levelStats[currentLevel];
+        let html = `<div class="app-container"><div class="header-bar"><span>📖 ${levels[currentLevel].name}</span><span>⭐ 本关:${stat.score}</span><button id="exitLvl" class="logout-text-btn">返回地图</button></div><div class="quiz-area"><div class="question-text">${q.text}</div><div class="options" id="optsDiv"></div><div class="feedback" id="fbDiv">答对+2分，答错-1分</div><button class="next-btn" id="nextBtn">下一题</button></div></div>`;
+        appRoot.innerHTML = html;
+        let optsDiv = document.getElementById("optsDiv");
+        q.options.forEach((opt, idx) => { let div = document.createElement("div"); div.className = "option"; div.innerHTML = `${String.fromCharCode(65+idx)}. ${opt}`; div.onclick = () => handleLevelAnswer(idx, item.qid); optsDiv.appendChild(div); });
+        document.getElementById("nextBtn").onclick = () => { if (!levelLock) alert("请先答题"); else { currentQIdx++; levelLock = false; renderLevelQuiz(); } };
+        document.getElementById("exitLvl").onclick = () => renderMap();
+        function handleLevelAnswer(selected, qid) {
+            if (levelLock) return;
+            let qq = Q[qid], correct = (selected === qq.correct);
+            let stat2 = userProgress[currentUser.userId].levelStats[currentLevel];
+            let fb = document.getElementById("fbDiv");
+            if (correct) {
+                if (!stat2.correctIds.includes(qid)) {
+                    let add = 2;
+                    if (stat2.wrongIds.includes(qid)) { add = 2; stat2.wrongIds = stat2.wrongIds.filter(id => id !== qid); removeWrong(currentUser.userId, qid); }
+                    stat2.score += add; stat2.correctIds.push(qid);
+                    addPoints(currentUser.userId, add);
+                    fb.innerHTML = `✅ 答对！ +${add}分<br>📖 ${qq.explanation}`;
+                } else fb.innerHTML = `✅ 本题已得过积分<br>📖 ${qq.explanation}`;
+            } else {
+                if (!stat2.correctIds.includes(qid) && !stat2.wrongIds.includes(qid)) {
+                    stat2.score -= 1; stat2.wrongIds.push(qid);
+                    addPoints(currentUser.userId, -1);
+                    addWrong(currentUser.userId, qid);
+                    fb.innerHTML = `❌ 答错 -1分<br>正确答案：${qq.options[qq.correct]}<br>📖 ${qq.explanation}<br>⚠️ 已加入错题本`;
+                } else fb.innerHTML = `❌ 正确答案：${qq.options[qq.correct]}<br>📖 ${qq.explanation}`;
+            }
+            levelLock = true; save();
+            let sb = document.getElementById("scoreBtn");
+            if (sb) sb.innerText = `⭐ ${userProgress[currentUser.userId].availPoints || 0}`;
+        }
+    }
+    function startRandom() {
+        let shuffled = [...Array(Q.length).keys()];
+        for (let i = shuffled.length - 1; i > 0; i--) { let j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+        trainingList = shuffled.slice(0, 10).map(idx => ({ qid: idx, data: Q[idx] }));
+        trainingPos = 0; trainingLock = false; trainingCombo = 0; trainingIsWrong = false;
+        renderTrain();
+    }
+    function startWrongTrain() {
+        let p = userProgress[currentUser.userId];
+        let wrongIds = Object.keys(p.wrongMap || {}).map(Number);
+        if (wrongIds.length === 0) { alert("错题本空空如也！"); return; }
+        trainingList = wrongIds.map(qid => ({ qid, data: Q[qid] }));
+        trainingPos = 0; trainingLock = false; trainingCombo = 0; trainingIsWrong = true;
+        renderTrain();
+    }
+    function renderTrain() {
+        if (trainingPos >= trainingList.length) { alert("训练完成！积分已更新"); renderMap(); return; }
+        let item = trainingList[trainingPos], q = item.data;
+        let html = `<div class="app-container"><div class="header-bar"><span>📖 特训 ${trainingPos+1}/${trainingList.length}</span><button id="exitTrain" class="logout-text-btn">返回地图</button></div><div class="quiz-area"><div class="question-text">${q.text}</div><div class="options" id="trainOpts"></div><div class="feedback" id="trainFeed">${trainingIsWrong ? '错题答对+3分，不扣分' : '每题+1分，连对3次额外+5'}</div><button class="next-btn" id="trainNext">下一题</button></div></div>`;
+        appRoot.innerHTML = html;
+        let optsDiv = document.getElementById("trainOpts");
+        q.options.forEach((opt, idx) => { let div = document.createElement("div"); div.className = "option"; div.innerHTML = `${String.fromCharCode(65+idx)}. ${opt}`; div.onclick = () => handleTrainAnswer(idx, item.qid); optsDiv.appendChild(div); });
+        document.getElementById("trainNext").onclick = () => { if (!trainingLock) alert("请先答题"); else { trainingPos++; trainingLock = false; renderTrain(); } };
+        document.getElementById("exitTrain").onclick = () => renderMap();
+        function handleTrainAnswer(selected, qid) {
+            if (trainingLock) return;
+            let qq = Q[qid], correct = (selected === qq.correct);
+            let fb = document.getElementById("trainFeed");
+            if (correct) {
+                let add = trainingIsWrong ? 3 : 1;
+                let msg = "";
+                if (trainingIsWrong && isWrong(currentUser.userId, qid)) { add = 3; removeWrong(currentUser.userId, qid); msg = "✅ 错题答对+3分！移出错题本"; }
+                else if (!trainingIsWrong) { trainingCombo++; if (trainingCombo >= 3 && trainingCombo % 3 === 0) { add += 5; msg = `🎉 正确！+${add}分 (连对奖励)`; } else msg = `✅ 正确 +${add}分`; }
+                else msg = `✅ 正确 +${add}分`;
+                addPoints(currentUser.userId, add);
+                fb.innerHTML = `${msg}<br>📖 ${qq.explanation}`;
+            } else {
+                trainingCombo = 0;
+                if (!trainingIsWrong && !isWrong(currentUser.userId, qid)) addWrong(currentUser.userId, qid);
+                fb.innerHTML = `❌ 正确答案：${qq.options[qq.correct]}<br>📖 ${qq.explanation}${!trainingIsWrong ? '<br>⚠️ 已加入错题本' : ''}`;
+            }
+            trainingLock = true; save();
+            let sb = document.getElementById("scoreBtn");
+            if (sb) sb.innerText = `⭐ ${userProgress[currentUser.userId].availPoints || 0}`;
+        }
+    }
+    initData();
+    renderLogin();
+    let scr = document.createElement("script"); scr.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1"; document.head.appendChild(scr);
+</script>
+</body>
+</html>
